@@ -1,0 +1,9 @@
+# Mapping of server name, IP, query port, and channel ID's
+# Make sure your bot can update all of these channels.
+SERVERS = [("My Namalsk Server", "127.0.0.1", 1111, 1111111111111)]
+
+# Update fequency
+WAIT = 300
+
+# Discord bot token
+BOT_TOKEN = ""
