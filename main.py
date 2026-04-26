@@ -15,9 +15,12 @@ client = Client(intents=intents)
 
 
 async def update_playercounts() -> Never:
+    player_counts = {}
     while True:
         for server in config.SERVERS:
             try:
+                if server[0] not in player_counts.keys():
+                    player_counts[server[0]] = 0
                 name = server[0]
                 info = a2s.info(
                     address=(server[1], server[2]),
@@ -26,6 +29,10 @@ async def update_playercounts() -> Never:
                 )
                 current = info.player_count
                 max = info.max_players
+                if current == player_counts[server[0]]:
+                    continue
+                else:
+                    player_counts[server[0]] = current
                 channel = client.get_channel(server[3])
                 if type(channel) in [None, PrivateChannel]:
                     raise TypeError(
