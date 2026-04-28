@@ -20,7 +20,7 @@ async def update_playercounts() -> Never:
         for server in config.SERVERS:
             try:
                 if server[0] not in player_counts.keys():
-                    player_counts[server[0]] = 0
+                    player_counts[server[0]] = -1
                 name = server[0]
                 info = a2s.info(
                     address=(server[1], server[2]),
